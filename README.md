@@ -67,23 +67,28 @@
 cd extension
 pnpm install
 pnpm run build
+
+# 或者去releases中下载指定版本
 ```
 
 然后在Chrome浏览器中:
 1. 打开 `chrome://extensions/`
 2. 启用"开发者模式"
-3. 点击"加载已解压的扩展程序"并选择 `extension/dist` 文件夹
+3. 点击"加载已解压的扩展程序"
 
 #### 2. 运行服务
 
-```bash
+```json
 # 方法1：使用项目提供的脚本入口点
-cd app
-uv run mcp-server-browser
-
-# 方法2：直接运行模块
-cd app
-python -m mcp_server_browser.app
+{
+  "mcpServers": {
+    "browser-mcp-server": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["mcp-server-browser"]
+    }
+  }
+}
 ```
 
 #### 3. 连接扩展和服务
@@ -96,30 +101,6 @@ python -m mcp_server_browser.app
 
 可以将本服务与支持MCP协议的AI客户端一起使用，例如Claude、CherryStudio等。
 
-配置示例：
-
-```json
-{
-  "mcpServers": {
-    "browser-mcp-server": {
-      "type": "stdio",
-      "command": "python",
-      "args": ["-m", "mcp_server_browser.app"]
-    }
-  }
-}
-
-# 或者使用项目提供的脚本入口点
-{
-  "mcpServers": {
-    "browser-mcp-server": {
-      "type": "stdio",
-      "command": "mcp-server-browser",
-      "args": []
-    }
-  }
-}
-```
 
 ## 🛠️ 可用工具列表
 
