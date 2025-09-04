@@ -133,7 +133,7 @@ async def browser_get_elements(
 
 
 @mcp.tool(name="browser_keyboard", description="Simulate keyboard events in the browser'")
-async def chrome_keyboard(
+async def browser_keyboard(
         keys: str = Field(description='Keys to simulate (e.g., "Enter", "Ctrl+C", "A,B,C" for sequence)'),
         selector: str = Field(description="CSS selector for the element to send keyboard events to."),
         delay: float = Field(default=0,

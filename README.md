@@ -79,7 +79,6 @@ pnpm run build
 #### 2. 运行服务
 
 ```json
-# 方法1：使用项目提供的脚本入口点
 {
   "mcpServers": {
     "browser-mcp-server": {
