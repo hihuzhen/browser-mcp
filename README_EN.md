@@ -1,4 +1,8 @@
-# Browser MCP Server
+# Browser MCP Server 🚀
+
+English | [简体中文](README.md)
+
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Python](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/downloads/) [![Stars](https://img.shields.io/github/stars/hihuzhen/browser-mcp.svg?style=social&label=Stars)](https://github.com/hihuzhen/browser-mcp/stargazers) [![Forks](https://img.shields.io/github/forks/hihuzhen/browser-mcp.svg?style=social&label=Forks)](https://github.com/hihuzhen/browser-mcp/network/members) [![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/hihuzhen/browser-mcp/pulls)
 
 A browser MCP (Model Context Protocol) server implementation based on WebSocket communication, allowing AI assistants to control your browser. This project is developed with reference to [hangwin/mcp-chrome](https://github.com/hangwin/mcp-chrome), changing the communication between services to WebSocket and rewriting the app part in Python.
 

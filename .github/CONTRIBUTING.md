@@ -27,7 +27,7 @@ Before you start contributing, please make sure you have:
 
 ### Reporting Bugs
 
-If you find a bug, please [create an issue](https://github.com/[YOUR_USERNAME]/browser-mcp/issues/new?template=bug_report.md) using the bug report template. Be sure to include:
+If you find a bug, please [create an issue](https://github.com/hihuzhen/browser-mcp/issues/new?template=bug_report.md) using the bug report template. Be sure to include:
 - A clear and descriptive title
 - Steps to reproduce the issue
 - Expected behavior
@@ -37,7 +37,7 @@ If you find a bug, please [create an issue](https://github.com/[YOUR_USERNAME]/b
 
 ### Suggesting Enhancements
 
-If you have an idea for an enhancement, please [create an issue](https://github.com/[YOUR_USERNAME]/browser-mcp/issues/new?template=feature_request.md) using the feature request template. Be sure to include:
+If you have an idea for an enhancement, please [create an issue](https://github.com/hihuzhen/browser-mcp/issues/new?template=feature_request.md) using the feature request template. Be sure to include:
 - A clear and descriptive title
 - A detailed description of the proposed feature
 - How it would benefit the project

@@ -1,6 +1,10 @@
-# Browser MCP Server
+# Browser MCP Server 🚀
 
-一个基于WebSocket通信的浏览器MCP（Model Context Protocol）服务器实现，允许AI助手控制你的浏览器。本项目参考 [hangwin/mcp-chrome](https://github.com/hangwin/mcp-chrome) 进行开发，将服务之间的通信改为WebSocket，并将app部分重写为Python实现。
+[English](README_EN.md) | 简体中文
+
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Python](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/downloads/) [![Stars](https://img.shields.io/github/stars/hihuzhen/browser-mcp.svg?style=social&label=Stars)](https://github.com/hihuzhen/browser-mcp/stargazers) [![Forks](https://img.shields.io/github/forks/hihuzhen/browser-mcp.svg?style=social&label=Forks)](https://github.com/hihuzhen/browser-mcp/network/members) [![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/hihuzhen/browser-mcp/pulls)
+
+Browser MCP Server是一个基于WebSocket通信的浏览器MCP（Model Context Protocol）服务器实现，允许AI助手控制你的浏览器。本项目参考 [hangwin/mcp-chrome](https://github.com/hangwin/mcp-chrome) 进行开发，将服务之间的通信改为WebSocket，并将app部分重写为Python实现。
 
 ## 🚀 项目特点
 
@@ -13,14 +17,15 @@
 ## 📁 项目结构
 
 ```
-├── app/                # Python实现的MCP服务器
-│   ├── src/mcp_server_browser/  # 主源码目录
-│   ├── pyproject.toml  # Python项目配置
-│   └── .gitignore      # Python项目的gitignore文件
-├── extension/          # Chrome浏览器扩展
-│   ├── common/         # 通用代码和常量
-│   ├── entrypoints/    # 入口点(background和popup)
-│   └── inject-scripts/ # 注入到网页的脚本
+├── packages/           # 项目包
+│   ├── app/            # Python实现的MCP服务器
+│   │   ├── src/mcp_server_browser/  # 主源码目录
+│   │   ├── pyproject.toml  # Python项目配置
+│   │   └── .gitignore      # Python项目的gitignore文件
+│   └── extension/      # Chrome浏览器扩展
+│       ├── common/     # 通用代码和常量
+│       ├── entrypoints/ # 入口点(background和popup)
+│       └── inject-scripts/ # 注入到网页的脚本
 ├── .gitignore          # 根目录gitignore文件
 └── LICENSE             # 许可证文件
 ```
