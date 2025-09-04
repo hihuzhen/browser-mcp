@@ -1,0 +1,52 @@
+[project]
+name = "mcp-server-browser"
+version = "0.1.0"
+description = "A browser extension to use your own browser as an MCP server with WebSocket communication"
+readme = "README.md"
+authors = [{name = "huzhen"}]
+license = { text = "MIT" }
+requires-python = ">=3.11"
+dependencies = [
+    "loguru>=0.7.3",
+    "mcp>=1.13.1",
+    "python-dotenv>=1.1.1",
+    "websockets>=10.0",
+    "pydantic>=2.0.0",
+    "markdownify>=1.2.0",
+]
+keywords = ["mcp", "websocket", "browser-extension", "server"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[[tool.uv.index]]
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+default = true
+
+[project.scripts]
+mcp-server-browser = "mcp_server_browser.app:main"
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcp_server_browser"]
+
+[tool.uv]
+dev-dependencies = [
+    "freezegun>=1.5.1",
+    "pyright>=1.1.389",
+    "pytest>=8.3.3",
+    "ruff>=0.8.1",
+]
+
+[tool.hatch.build.targets.sdist]
+include = ["/src", "/README.md"]
+exclude = ["/.idea"]

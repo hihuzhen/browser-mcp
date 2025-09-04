@@ -1,0 +1,1 @@
+## A Chrome extension to use your own Chrome as an MCP server with WebSocket communication
