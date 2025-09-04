@@ -32,11 +32,6 @@
 - **MCP服务**: 实现MCP协议，提供各种浏览器控制工具
 - **消息处理**: 处理WebSocket消息和MCP工具调用
 
-关键文件：
-- `app.py`: 应用入口点
-- `websockets_services/`: WebSocket服务实现
-- `mcp_server/`: MCP服务器实现
-
 ### Extension部分（TypeScript实现）
 
 主要组件：
@@ -91,7 +86,7 @@ cd app
 python -m mcp_server_browser.app
 ```
 
-#### 4. 连接扩展和服务
+#### 3. 连接扩展和服务
 
 点击浏览器中的扩展图标，连接到WebSocket服务。
 
