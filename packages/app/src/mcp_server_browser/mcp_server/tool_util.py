@@ -7,8 +7,9 @@ from mcp_server_browser.websockets_services.websocket_server import WebSocketSer
 
 _tool_call_lock = anyio.Lock()
 
-async def call_tool(websocket_server: WebSocketServer, tool_name: str, tool_args: dict) -> Any:
+async def call_tool(tool_name: str, tool_args: dict) -> Any:
     async with _tool_call_lock:
+        websocket_server = await WebSocketServer.get_instance()
         request_id = await websocket_server.broadcast_tool_request(name=tool_name, tool_args=tool_args)
         if not request_id:
             raise ValueError(f"工具 {tool_name} 调用失败: connection failed.")
