@@ -2,8 +2,8 @@ import json
 import anyio
 from typing import Any
 
-from mcp_server_browser.message import ToolResponseMessage
-from mcp_server_browser.websockets_services.websocket_server import WebSocketServer
+from nep_browser_engine.message import ToolResponseMessage
+from nep_browser_engine.websockets_services.websocket_server import WebSocketServer
 
 _tool_call_lock = anyio.Lock()
 

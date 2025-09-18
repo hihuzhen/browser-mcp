@@ -4,7 +4,7 @@ from loguru import logger
 from websockets.asyncio.server import ServerConnection
 from websockets.exceptions import ConnectionClosed
 
-from mcp_server_browser.message import WebSocketMessage
+from nep_browser_engine.message import WebSocketMessage
 
 
 class ConnectionManager:

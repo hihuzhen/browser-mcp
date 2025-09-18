@@ -8,10 +8,10 @@ from loguru import logger
 from websockets.asyncio.server import ServerConnection
 from websockets.exceptions import WebSocketException
 
-from mcp_server_browser.config import config
-from mcp_server_browser.message import WebSocketMessage, WebSocketMessageType, ToolResponseMessage
-from mcp_server_browser.websockets_services.connection_manager import ConnectionManager
-from mcp_server_browser.websockets_services.message_pool import ToolMessagePool
+from nep_browser_engine.config import config
+from nep_browser_engine.message import WebSocketMessage, WebSocketMessageType, ToolResponseMessage
+from nep_browser_engine.websockets_services.connection_manager import ConnectionManager
+from nep_browser_engine.websockets_services.message_pool import ToolMessagePool
 
 
 class WebSocketServer:

@@ -4,8 +4,8 @@ from markdownify import markdownify
 from mcp.server.fastmcp import FastMCP
 from pydantic import Field
 
-from mcp_server_browser.mcp_server.tool_util import call_tool
-from mcp_server_browser.mcp_server.types import (BrowserNavigateToolReturn, GetWindowsAndTabsToolReturn,
+from nep_browser_engine.mcp_server.tool_util import call_tool
+from nep_browser_engine.mcp_server.types import (BrowserNavigateToolReturn, GetWindowsAndTabsToolReturn,
                                                  BrowserGoBackOrForwardToolReturn,
                                                  BrowserClickElementToolReturn, BrowserFillOrSelectToolReturn,
                                                  BrowserGetElementsToolReturn,

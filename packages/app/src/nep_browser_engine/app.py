@@ -4,8 +4,8 @@ import uvicorn
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
-from mcp_server_browser.mcp_server.mcp import mcp
-from mcp_server_browser.websockets_services.websocket_server import WebSocketServer
+from nep_browser_engine.mcp_server.mcp import mcp
+from nep_browser_engine.websockets_services.websocket_server import WebSocketServer
 
 @asynccontextmanager
 async def web_server_lifespan(app) -> AsyncIterator[None]:

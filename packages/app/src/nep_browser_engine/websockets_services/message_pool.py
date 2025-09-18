@@ -6,7 +6,7 @@ from typing import Dict, Optional
 
 from loguru import logger
 
-from mcp_server_browser.message import ToolResponseMessage
+from nep_browser_engine.message import ToolResponseMessage
 
 
 class PooledMessage:
