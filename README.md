@@ -4,7 +4,7 @@
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Python](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/downloads/) [![Stars](https://img.shields.io/github/stars/hihuzhen/browser-mcp.svg?style=social&label=Stars)](https://github.com/hihuzhen/browser-mcp/stargazers) [![Forks](https://img.shields.io/github/forks/hihuzhen/browser-mcp.svg?style=social&label=Forks)](https://github.com/hihuzhen/browser-mcp/network/members) [![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/hihuzhen/browser-mcp/pulls)
 
-Browser MCP Server是一个基于WebSocket通信的浏览器MCP（Model Context Protocol）服务器实现，允许AI助手控制你的浏览器。本项目参考 [hangwin/mcp-chrome](https://github.com/hangwin/mcp-chrome) 进行开发，将服务之间的通信改为WebSocket，并将app部分重写为Python实现。
+Browser MCP Server是一个基于WebSocket通信的浏览器MCP（Model Context Protocol）服务器实现，允许AI助手控制你的浏览器。
 
 ## 🚀 项目特点
 
@@ -19,7 +19,7 @@ Browser MCP Server是一个基于WebSocket通信的浏览器MCP（Model Context 
 ```
 ├── packages/           # 项目包
 │   ├── app/            # Python实现的MCP服务器
-│   │   ├── src/mcp_server_browser/  # 主源码目录
+│   │   ├── src/nep_browser_engine/  # 主源码目录
 │   │   ├── pyproject.toml  # Python项目配置
 │   │   └── .gitignore      # Python项目的gitignore文件
 │   └── extension/      # Chrome浏览器扩展
@@ -86,10 +86,10 @@ pnpm run build
 ```json
 {
   "mcpServers": {
-    "browser-mcp-server": {
+    "nep-browser-engine": {
       "type": "stdio",
       "command": "uvx",
-      "args": ["mcp-server-browser"]
+      "args": ["nep-browser-engine"]
     }
   }
 }
@@ -129,8 +129,8 @@ pnpm run build
 ### Python服务端开发
 
 1. 确保安装了所有依赖
-2. 可以通过修改 `app/src/mcp_server_browser/config.py` 来配置WebSocket端口等参数
-3. 运行时可以通过参数指定传输协议: `python -m mcp_server_browser.app --transport stdio`
+2. 可以通过修改 `app/src/nep_browser_engine/config.py` 来配置WebSocket端口等参数
+3. 运行时可以通过参数指定传输协议: `python -m nep_browser_engine.app --transport stdio`
 
 ### Chrome扩展开发
 
@@ -147,6 +147,9 @@ pnpm run build
 ## 🤝 贡献
 
 欢迎提交issue和PR来帮助改进这个项目！
+
+## 鸣谢
+本项目参考 [hangwin/mcp-chrome](https://github.com/hangwin/mcp-chrome)
 
 ## 📄 许可证
 

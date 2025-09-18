@@ -19,7 +19,7 @@ A browser MCP (Model Context Protocol) server implementation based on WebSocket 
 ```
 ├── packages/           # Project packages
 │   ├── app/            # Python implementation of MCP server
-│   │   ├── src/mcp_server_browser/  # Main source code directory
+│   │   ├── src/nep_browser_engine/  # Main source code directory
 │   │   ├── pyproject.toml  # Python project configuration
 │   │   └── .gitignore      # Gitignore file for Python project
 │   └── extension/      # Chrome browser extension
@@ -61,7 +61,7 @@ Main components:
 
 ### Prerequisites
 
-- Python 3.9+ and pip/poetry/uv
+- Python 3.9+ and uv
 - Chrome/Chromium browser
 
 ### Installation Steps
@@ -86,10 +86,10 @@ Then in Chrome browser:
 ```json
 {
   "mcpServers": {
-    "browser-mcp-server": {
+    "nep-browser-engine": {
       "type": "stdio",
       "command": "uvx",
-      "args": ["mcp-server-browser"]
+      "args": ["nep-browser-engine"]
     }
   }
 }
@@ -128,8 +128,8 @@ Here are the main available tools:
 ### Python Server Development
 
 1. Ensure all dependencies are installed
-2. You can configure WebSocket port and other parameters by modifying `app/src/mcp_server_browser/config.py`
-3. You can specify the transport protocol when running: `python -m mcp_server_browser.app --transport stdio`
+2. You can configure WebSocket port and other parameters by modifying `app/src/nep_browser_engine/config.py`
+3. You can specify the transport protocol when running: `python -m nep_browser_engine.app --transport stdio`
 
 ### Chrome Extension Development
 
@@ -146,6 +146,9 @@ Here are the main available tools:
 ## 🤝 Contribution
 
 Contributions are welcome! Please submit issues and PRs to help improve this project.
+
+## Acknowledgements
+This project references [hangwin/mcp-chrome](https://github.com/hangwin/mcp-chrome)
 
 ## 📄 License
 
