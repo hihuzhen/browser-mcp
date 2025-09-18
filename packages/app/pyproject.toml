@@ -13,6 +13,7 @@ dependencies = [
     "websockets>=10.0",
     "pydantic>=2.0.0",
     "markdownify>=1.2.0",
+    "lxml>=6.0.1",
 ]
 keywords = ["mcp", "websocket", "browser-extension", "server"]
 classifiers = [

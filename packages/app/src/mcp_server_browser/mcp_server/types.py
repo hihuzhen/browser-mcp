@@ -90,11 +90,18 @@ class BrowserCloseTabsToolReturn(BaseModel):
     closedTabIds: list[int] = None
 
 
-class BrowserScreenshot(BaseModel):
+class BrowserScreenshotReturn(BaseModel):
     mimeType: str
     base64Data: str
 
 
+class SearchResultItem(BaseModel):
+    url: str
+    title: str
+    content: str
+
+
 __all__ = ["BrowserNavigateToolReturn", "GetWindowsAndTabsToolReturn", "BrowserGoBackOrForwardToolReturn",
            "BrowserClickElementToolReturn", "BrowserFillOrSelectToolReturn", "BrowserGetElementsToolReturn",
-           "BrowserKeyboardToolReturn", "BrowserGetWebContentToolReturn", "BrowserCloseTabsToolReturn", "BrowserScreenshot"]
+           "BrowserKeyboardToolReturn", "BrowserGetWebContentToolReturn", "BrowserCloseTabsToolReturn",
+           "BrowserScreenshotReturn", "SearchResultItem"]

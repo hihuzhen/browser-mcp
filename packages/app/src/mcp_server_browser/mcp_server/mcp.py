@@ -1,8 +1,11 @@
+
 from copy import deepcopy
+from urllib.parse import quote_plus
 
 from markdownify import markdownify
 from mcp.server.fastmcp import FastMCP
 from pydantic import Field
+from typing import Annotated
 
 from mcp_server_browser.mcp_server.tool_util import call_tool
 from mcp_server_browser.mcp_server.types import (BrowserNavigateToolReturn, GetWindowsAndTabsToolReturn,
@@ -10,7 +13,8 @@ from mcp_server_browser.mcp_server.types import (BrowserNavigateToolReturn, GetW
                                                  BrowserClickElementToolReturn, BrowserFillOrSelectToolReturn,
                                                  BrowserGetElementsToolReturn,
                                                  BrowserKeyboardToolReturn, BrowserGetWebContentToolReturn,
-                                                 BrowserCloseTabsToolReturn, BrowserScreenshot)
+                                                 BrowserCloseTabsToolReturn, BrowserScreenshotReturn, SearchResultItem)
+from mcp_server_browser.mcp_server.utils.google_search_utils import parse_google_search_result
 
 mcp = FastMCP("Milu", stateless_http=True)
 
@@ -157,7 +161,43 @@ async def browser_close_tabs(
 async def browser_screenshot(
         full_page: bool = Field(default=False,
                                 description="Store screenshot of the entire page."),
-) -> BrowserScreenshot:
-    result: BrowserScreenshot = await call_tool(tool_name="chrome_screenshot",
-                                                tool_args={"fullPage": full_page, "storeBase64": True})
+) -> BrowserScreenshotReturn:
+    result: BrowserScreenshotReturn = await call_tool(tool_name="chrome_screenshot",
+                                                      tool_args={"fullPage": full_page, "storeBase64": True})
     return result
+
+
+@mcp.tool(name="google_search")
+async def google_search(
+    query: Annotated[str, Field(
+        description=(
+                "The search query string. This can include advanced Google search operators. "
+                "For example: '\"large language models\" filetype:pdf site:mit.edu -jobs after:2024-01-01'. "
+                "Use operators like: "
+                "\"exact phrase\" for exact matches, "
+                "-word to exclude a word, "
+                "OR for alternatives (e.g., 'deep learning OR neural network'), "
+                "site: to limit to a domain, "
+                "filetype: to search for a file type, "
+                "after:YYYY-MM-DD or before:YYYY-MM-DD for date ranges."
+        )
+    )]
+) -> list[SearchResultItem]:
+    """
+    执行 Google 高级搜索，提供精细化的查询能力。
+
+    利用详细的筛选条件来获取高度相关的网络信息。通过组合使用各个参数，可以构建出
+    复杂且精确的搜索查询，从而高效地从海量数据中定位到所需信息。
+
+    主要特性:
+    - 多维度搜索: 支持通过关键词、精确短语、排除词等多个维度进行搜索。
+    - 精细化过滤: 能够按语言、地区、更新时间、网站、文件类型等进行过滤。
+    - 数字范围: 支持在特定数字范围内进行搜索，适用于查找价格、年份等信息。
+
+    """
+    base_url = "https://www.google.com/search"
+    encoded_query = quote_plus(query)
+    final_url = f"{base_url}?q={encoded_query}"
+    web_content_result: BrowserGetWebContentToolReturn = await call_tool(tool_name="chrome_get_web_content", tool_args={"url": final_url,"htmlContent": True})
+
+    return parse_google_search_result(web_content_result["htmlContent"])
