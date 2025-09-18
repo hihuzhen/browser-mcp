@@ -1,6 +1,6 @@
 [project]
 name = "nep-browser-engine"
-version = "0.1.0"
+version = "0.1.1"
 description = "A browser extension to use your own browser as an MCP server with WebSocket communication"
 readme = "README.md"
 authors = [{name = "huzhen"}]
