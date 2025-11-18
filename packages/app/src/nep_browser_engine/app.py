@@ -49,7 +49,8 @@ def main():
     parser.add_argument(
         "--port",
         default=8000,
-        help="streamable-http server port"
+        help="streamable-http server port",
+        type=int
     )
     args = parser.parse_args()
     transport = args.transport

@@ -68,7 +68,7 @@ async def browser_fill_or_select(
 
 @mcp.tool(name="browser_get_elements", description="Get elements from the current page")
 async def browser_get_elements(
-        selector: str = Field(default="", description="CSS selector to filter elements."),
+        # selector: str = Field(default="", description="CSS selector to filter elements."),
         target_elements: list[str] = Field(default=None, description="""
             button: 'button, input[type="button"], input[type="submit"], [role="button"]',
             link: 'a[href], [role="link"]',
@@ -83,6 +83,7 @@ async def browser_get_elements(
             interactive: `[onclick], [tabindex]:not([tabindex^="-"]), [role="menuitem"], [role="slider"], [role="option"], [role="treeitem"]`,
         """),
 ) -> BrowserGetElementsToolReturn:
+    selector = ""
     result = await call_tool(
         tool_name="chrome_get_interactive_elements",
         tool_args={"selector": selector, "includeCoordinates": False})
@@ -128,12 +129,11 @@ async def browser_get_web_content(
 ) -> BrowserGetWebContentToolReturn:
     need_html = html_content
     need_text = text_content
-    if not selector:
-        need_html = True
+    # if not selector:
+    #     need_html = True
     result: BrowserGetWebContentToolReturn = await call_tool(tool_name="chrome_get_web_content",
-                                                             tool_args={"url": url, "htmlContent": need_html,
-                                                                        "textContent": need_text,
-                                                                        "selector": selector})
+                                                             tool_args={"url": url, "htmlContent": True,
+                                                                        "textContent": need_text})
     if not html_content:
         html_text = markdownify(result["htmlContent"], strip=["a", "img"])
         result["htmlContent"] = ""
@@ -152,12 +152,12 @@ async def browser_close_tabs(
     return result
 
 
-@mcp.tool(name="browser_screenshot",
-          description="Take a screenshot of the current page or a specific element(if you want to see the page, recommend to use chrome_get_web_content first)")
-async def browser_screenshot(
-        full_page: bool = Field(default=False,
-                                description="Store screenshot of the entire page."),
-) -> BrowserScreenshot:
-    result: BrowserScreenshot = await call_tool(tool_name="chrome_screenshot",
-                                                tool_args={"fullPage": full_page, "storeBase64": True})
-    return result
+# @mcp.tool(name="browser_screenshot",
+#           description="Take a screenshot of the current page or a specific element(if you want to see the page, recommend to use chrome_get_web_content first)")
+# async def browser_screenshot(
+#         full_page: bool = Field(default=False,
+#                                 description="Store screenshot of the entire page."),
+# ) -> BrowserScreenshot:
+#     result: BrowserScreenshot = await call_tool(tool_name="chrome_screenshot",
+#                                                 tool_args={"fullPage": full_page, "storeBase64": True})
+#     return result
